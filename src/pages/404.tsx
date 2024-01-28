@@ -1,4 +1,4 @@
-import Layout from "./pedram/layout"
+import Layout from "@/components/layout";
 
 const Error404 = () => {
     return (

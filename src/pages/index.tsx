@@ -1,10 +1,6 @@
-import Image from "next/image";
 import Swiper13 from "@/components/swiper13";
-import SwiperTest from "@/components/swipertest";
 import { contextApi } from "@/components/contextapi";
-import { useState, createContext } from "react";
-import TestContext2 from "../components/testcontext2";
-import TestContext1 from "../components/testcontext1";
+import { useState} from "react";
 import Layout from "@/components/layout";
 import MoviesCard from "./movies/moviescard";
 import SearchMovies from "@/components/searchmovies";

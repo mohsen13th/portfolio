@@ -19,6 +19,7 @@ const Dashboard = () => {
       } catch {}
     };
     userDetail();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
