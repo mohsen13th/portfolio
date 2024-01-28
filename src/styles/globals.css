@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+}
+
+@font-face {
+    font-family: 'IRANSans';
+    src: url('/fonts/Iransans/IRANSans.eot') format('eot'), url('/fonts/Iransans/IRANSans.ttf') format('truetype'), url('/fonts/Iransans/IRANSans.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@media (prefers-color-scheme: dark) {
+     :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+}
+
+.pedram {
+    direction: rtl;
+    background-color: #fff;
+    font-family: IranSans;
+}
