@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Layout from "@/components/layout";
 import { addMovie } from "@/components/services";
+import { useRouter } from "next/router";
 
 const AddMovie = () => {
   console.log(13);
@@ -18,6 +19,7 @@ const AddMovie = () => {
   const [insertmovie, setInsertmovie] = useState<any>();
   const [chooseImage, setChooseImage] = useState<any>();
   const [imgsrc, setImgsrc] = useState<any>("/picture.svg");
+  const router = useRouter();
 
   const handleChange = (event: any) => {
     // console.log(event.target.files[0]);
@@ -66,7 +68,7 @@ const AddMovie = () => {
         setInsertmovie({});
         console.log(insertmovie);
       }
-
+      router.push("/");
       console.log("nice");
     } catch (err) {
       console.log(err);
