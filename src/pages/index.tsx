@@ -1,9 +1,9 @@
-import Swiper13 from "@/components/swiper13";
 import { contextApi } from "@/components/contextapi";
 import { useState} from "react";
 import Layout from "@/components/layout";
 import MoviesCard from "./movies/moviescard";
 import SearchMovies from "@/components/searchmovies";
+import SwiperSlider from './../components/swiper';
 export default function Home() {
   let [cont1, setCont1] = useState(0);
   let [cont2, setCont2] = useState();
@@ -23,7 +23,7 @@ export default function Home() {
       >
         <Layout>
         <div className="bg-cover bg-gray-300" >
-        <Swiper13 />
+        <SwiperSlider />
         <SearchMovies/>
         <MoviesCard/>
         </div>

@@ -23,9 +23,9 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
 
-import styles from "./Swiper13.module.css";
+import styles from "./Swiper.module.css";
 
-const Swiper13 = () => {
+const SwiperSlider = () => {
   const [AllMovies, setAllMovies] = useState([]);
 
   useEffect(() => {
@@ -118,4 +118,4 @@ const Swiper13 = () => {
   );
 };
 
-export default Swiper13;
+export default SwiperSlider;
