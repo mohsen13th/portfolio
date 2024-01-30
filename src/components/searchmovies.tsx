@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { contextApi } from "./contextapi";
+import { contextApi } from "../utils/contextapi";
 
 const SearchMovies = () => {
   let [query, setQuery] = useState<string>("");

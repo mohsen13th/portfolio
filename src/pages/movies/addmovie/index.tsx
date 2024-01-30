@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback, useContext, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Layout from "@/components/layout";
-import { addMovie } from "@/components/services";
+import { addMovie } from "@/utils/api/services";
 import { useRouter } from "next/router";
 
 const AddMovie = () => {

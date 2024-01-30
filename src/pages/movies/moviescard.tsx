@@ -3,8 +3,8 @@ import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { contextApi } from "@/components/contextapi";
-import { FilteredMoviesSrv } from "@/components/services";
+import { contextApi } from "@/utils/contextapi";
+import { FilteredMoviesSrv } from "@/utils/api/services";
 
 const MoviesCard = () => {
   const [AllMovies, setAllMovies] = useState([]);

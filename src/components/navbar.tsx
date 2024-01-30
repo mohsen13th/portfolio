@@ -1,6 +1,6 @@
 import { Fragment, useContext, useState } from 'react'
 import { useAtom } from 'jotai';
-import {loginInfo} from '@/lib/atoms';
+import {loginInfo} from '@/utils/lib/atoms';
 import Image from 'next/image'
 import Link from 'next/link'
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'

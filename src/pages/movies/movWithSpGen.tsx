@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GenresSrv, MoviesGenSrv } from "@/components/services";
+import { GenresSrv, MoviesGenSrv } from "@/utils/api/services";
 import Image from "next/image";
 import Link from "next/link";
 

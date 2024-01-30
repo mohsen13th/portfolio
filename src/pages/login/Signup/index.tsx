@@ -4,7 +4,7 @@ import Image from "next/image";
 import axios from "axios";
 import Layout from "@/components/layout";
 
-import { register } from "@/components/services";
+import { register } from "@/utils/api/services";
 
 const SignUp = () => {
   const [addMember, setAddMember] = useState<any>();

@@ -1,8 +1,8 @@
 import Layout from "@/components/layout";
-import { userInfo } from "@/components/services";
+import { userInfo } from "@/utils/api/services";
 import { useState, useEffect } from "react";
 import { useAtom } from "jotai";
-import { loginInfo } from "@/lib/atoms";
+import { loginInfo } from "@/utils/lib/atoms";
 const Dashboard = () => {
   const [person, setPerson] = useAtom(loginInfo);
 

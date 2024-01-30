@@ -17,6 +17,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/testcontext2.tsx", "src/pages/index.tsx", "src/pages/index.tsx", "src/components/contextapi.tsx", "src/pages/Movies/index.tsx","src/pages/about/page.jsx", "src/pages/pedram/form/api/submit.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/testcontext2.tsx", "src/pages/index.tsx", "src/pages/index.tsx", "src/utils/contextapi.tsx", "src/pages/Movies/index.tsx","src/pages/about/page.jsx", "src/pages/pedram/form/api/submit.js"],
   "exclude": ["node_modules"]
 }

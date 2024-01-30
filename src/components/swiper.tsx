@@ -14,7 +14,7 @@ import {
   Parallax,
 } from "swiper/modules";
 
-import { MoviesSrv } from "./services";
+import { MoviesSrv } from "../utils/api/services";
 
 // Import Swiper styles
 import "swiper/css";

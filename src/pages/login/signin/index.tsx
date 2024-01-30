@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Layout from "@/components/layout";
 import { useAtom } from "jotai";
-import { loginInfo } from "@/lib/atoms";
-import { login } from "@/components/services";
+import { loginInfo } from "@/utils/lib/atoms";
+import { login } from "@/utils/api/services";
 import { set } from "lodash";
 
 const SignIn = () => {

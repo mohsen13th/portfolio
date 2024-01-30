@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import MovWithSpGen from "../movWithSpGen";
-import { MovieSrv } from "@/components/services";
+import { MovieSrv } from "@/utils/api/services";
 import Layout from "@/components/layout";
 
 const MovieDetail = () => {

@@ -1,4 +1,4 @@
-import { contextApi } from "@/components/contextapi";
+import { contextApi } from "@/utils/contextapi";
 import { useState} from "react";
 import Layout from "@/components/layout";
 import MoviesCard from "./movies/moviescard";
