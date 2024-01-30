@@ -14,7 +14,7 @@ import {
   Parallax,
 } from "swiper/modules";
 
-import {MoviesSrv} from "./services";
+import { MoviesSrv } from "./services";
 
 // Import Swiper styles
 import "swiper/css";
@@ -27,7 +27,7 @@ import styles from "./Swiper13.module.css";
 
 const Swiper13 = () => {
   const [AllMovies, setAllMovies] = useState([]);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,24 +43,52 @@ const Swiper13 = () => {
   return (
     <>
       <Swiper
-        modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay, Parallax]}
+        modules={[Navigation, Pagination, A11y, Parallax]}
         spaceBetween={10}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
         }}
         slidesPerView={8}
+        breakpoints={{
+          320: {
+            width: 320,
+            slidesPerView: 1,
+          },
+          576: {
+            width: 576,
+            slidesPerView: 2,
+          },
+          640: {
+            width: 640,
+            slidesPerView: 3,
+          },
+          768: {
+            width: 768,
+            slidesPerView: 4,
+          },
+          1000: {
+            width: 1000,
+            slidesPerView: 8,
+          },
+          1300: {
+            width: 1360,
+            slidesPerView: 8,
+          },
+        }}
         navigation
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
-        // onSwiper={(swiper) => console.log(swiper)}
-        // onSlideChange={() => console.log("slide change")}
         className="mySwiper"
       >
         {AllMovies.map((m: any) => (
           // <Movie movie={m} key={m.id}/>
           <SwiperSlide key={m.id} className=" pt-5 mb-10">
-            <Link href={`/movies/movie?id=${m.id}&gid=${m.genres!=undefined?m.genres[0]:`drama`}`}>
+            <Link
+              href={`/movies/movie?id=${m.id}&gid=${
+                m.genres != undefined ? m.genres[0] : `drama`
+              }`}
+            >
               <div className="mr-2 ml-2 rounded overflow-hidden shadow-lg bg-gray-700 pb-3">
                 <Image
                   className="w-full"
@@ -71,7 +99,9 @@ const Swiper13 = () => {
                   priority
                 />
                 <div className="px-4 py-2">
-                  <div className="font-bold text-xs h-10 text-white">{m.title}</div>
+                  <div className="font-bold text-xs h-10 text-white">
+                    {m.title}
+                  </div>
                 </div>
                 <div className="mb-2">
                   <span className="block w-10 px-2 py-2 bg-yellow-200 rounded-full font-semibold text-red-700 m-auto align-middle">

@@ -5,7 +5,7 @@
 const nextConfig = {
     output: "export", // <=== enables static exports
     reactStrictMode: true,
-    basePath: "/portfolio",
+    // basePath: "/portfolio",
     images: {
       unoptimized: true,
       remotePatterns: [
