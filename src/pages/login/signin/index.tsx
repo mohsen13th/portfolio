@@ -5,7 +5,6 @@ import Layout from "@/components/layout";
 import { useAtom } from "jotai";
 import { loginInfo } from "@/utils/lib/atoms";
 import { login } from "@/utils/api/services";
-import { set } from "lodash";
 
 const SignIn = () => {
   const [member, setMember] = useState<any>();
@@ -16,7 +15,7 @@ const SignIn = () => {
       ...member,
       [events.target.name]: events.target.value,
     });
-    console.log(member);
+    // console.log(member);
   };
   const loginMember = async (event: any) => {
     event.preventDefault();
@@ -26,15 +25,8 @@ const SignIn = () => {
         frmData.set("grant_type", "password");
         frmData.set("username", member.username);
         frmData.set("password", member.password);
-        console.log(frmData.get("username"));
-        console.log(frmData.get("password"));
-        console.log(frmData.get("grant_type"));
-        console.log(member);
         const { status, data } = await login(frmData);
         setMember({});
-        console.log(member);
-        console.log(frmData);
-        console.log(data);
         localStorage.setItem("authtoken", data.access_token);
       }
       setLoginin({
@@ -42,7 +34,6 @@ const SignIn = () => {
         menuAddress:"/login/dashboard"
       })
       router.push("/login/dashboard");
-      console.log("nice");
     } catch (err) {
       console.log(err);
     }

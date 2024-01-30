@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { contextApi } from "@/utils/contextapi";
-import { FilteredMoviesSrv } from "@/utils/api/services";
+import { FilteredMovies } from "@/utils/api/services";
 
 const MoviesCard = () => {
   const [AllMovies, setAllMovies] = useState([]);
@@ -12,7 +12,7 @@ const MoviesCard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const allMovies = await FilteredMoviesSrv(movieName);
+        const allMovies = await FilteredMovies(movieName);
         setAllMovies(allMovies);
       } catch (err) {}
     };

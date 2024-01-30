@@ -1,22 +1,19 @@
 import { contextApi } from "@/utils/contextapi";
-import { useState} from "react";
+import {QueryClient, QueryClientProvider}from '@tanstack/react-query';
+import { Children, useState} from "react";
 import Layout from "@/components/layout";
 import MoviesCard from "./movies/moviescard";
 import SearchMovies from "@/components/searchmovies";
-import SwiperSlider from './../components/swiper';
+import SwiperSlider from '../components/swiperSlider';
 export default function Home() {
-  let [cont1, setCont1] = useState(0);
-  let [cont2, setCont2] = useState();
   let [movieName, setMovieName] = useState<string>('');
+  const myClient = new QueryClient();
   
   return (
     <>
+    <QueryClientProvider client={myClient}>
       <contextApi.Provider
         value={{
-          cont1,
-          cont2,
-          setCont1,
-          setCont2,
           movieName,
           setMovieName,
         }}
@@ -32,6 +29,7 @@ export default function Home() {
         {/* <TestContext2/> */}
         </Layout>
       </contextApi.Provider>
+      </QueryClientProvider>
     </>
   );
 }

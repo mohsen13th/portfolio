@@ -1,8 +1,9 @@
 // Import Swiper React components
 import { useState, useEffect, useContext } from "react";
-
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
+import Loading from "./../pages/loading";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
@@ -14,7 +15,7 @@ import {
   Parallax,
 } from "swiper/modules";
 
-import { MoviesSrv } from "../utils/api/services";
+import { Movies } from "../utils/api/services";
 
 // Import Swiper styles
 import "swiper/css";
@@ -26,19 +27,20 @@ import "swiper/css/autoplay";
 import styles from "./Swiper.module.css";
 
 const SwiperSlider = () => {
-  const [AllMovies, setAllMovies] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const allMovies = await MoviesSrv();
-        setAllMovies(allMovies);
-      } catch (err) {}
-    };
-    fetchData();
-  }, []);
+  const fetchData = () => {
+    const data = Movies();
+    return data;
+  };
 
-  // console.log(AllMovies);
+  const { data:allMovies, isError, error, isLoading } = useQuery({
+    queryKey: ["movie"],
+    queryFn: fetchData,
+  });
+
+  if (isError) return <h1>Error: {error.message}</h1>
+
+  if (isLoading) return <Loading/>
 
   return (
     <>
@@ -81,7 +83,7 @@ const SwiperSlider = () => {
         scrollbar={{ draggable: true }}
         className="mySwiper"
       >
-        {AllMovies.map((m: any) => (
+        {allMovies.map((m: any) => (
           // <Movie movie={m} key={m.id}/>
           <SwiperSlide key={m.id} className=" pt-5 mb-10">
             <Link

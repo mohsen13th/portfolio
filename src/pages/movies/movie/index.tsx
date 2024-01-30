@@ -5,14 +5,14 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import MovWithSpGen from "../movWithSpGen";
-import { MovieSrv } from "@/utils/api/services";
+import { aMovie } from "@/utils/api/services";
 import Layout from "@/components/layout";
 
 const MovieDetail = () => {
   const [Movie, setMovie]: any = useState({});
   const [genName, setGenName]: any = useState();
   const router = useRouter();
-  const { id, gid }: any = router.query;
+  const { id, gid } = router.query;
 
   useEffect(() => {
     setGenName(gid);
@@ -20,8 +20,8 @@ const MovieDetail = () => {
     const fetchData = async () => {
       try {
         if (id !== undefined) {
-          let idQuery: number = parseInt(id);
-          const movie = await MovieSrv(idQuery);
+          let idQuery: number = parseInt(id[0]);
+          const movie = await aMovie(idQuery);
           setMovie(movie);
         }
       } catch (err) {}

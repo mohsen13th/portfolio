@@ -9,12 +9,12 @@ const Dashboard = () => {
   useEffect(() => {
     const userDetail = async () => {
       try {
-        console.log(localStorage.getItem("name"));
+        // console.log(localStorage.getItem("name"));
         const loginInfo = localStorage.getItem("authtoken");
         const { status, data } = await userInfo(loginInfo);
         localStorage.setItem("user", data.name);
-        console.log(localStorage.getItem("user"));
-        console.log(data);
+        // console.log(localStorage.getItem("user"));
+        // console.log(data);
         setPerson({...person, user: data.name, menuTitle:data.name});
       } catch {}
     };

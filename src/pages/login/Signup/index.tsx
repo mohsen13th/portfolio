@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import axios from "axios";
 import Layout from "@/components/layout";
 
 import { register } from "@/utils/api/services";
+import router from "next/router";
 
 const SignUp = () => {
   const [addMember, setAddMember] = useState<any>();
@@ -15,24 +14,18 @@ const SignUp = () => {
           ...addMember,
           [events.target.name]: events.target.value,
         });
-        console.log(addMember);
   };
 
   const regMember = async (event: any) => {
     event.preventDefault();
-    console.log();
     try {
-      console.log();
       if (addMember != undefined) {
         let json = JSON.stringify(addMember);
         const { status, data } = await register(json);
         setAddMember({});
-        console.log(addMember);
-        console.log(json);
+        router.push("/login/dashboard");
       }
-      console.log("nice");
     } catch (err) {
-      console.log(err);
     }
   };
   return (

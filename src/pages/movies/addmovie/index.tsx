@@ -1,53 +1,23 @@
-import { useState, useEffect, useCallback, useContext, useRef } from "react";
+import { useState, useEffect} from "react";
 
 import Image from "next/image";
-import Link from "next/link";
 import Layout from "@/components/layout";
 import { addMovie } from "@/utils/api/services";
 import { useRouter } from "next/router";
 
 const AddMovie = () => {
-  console.log(13);
-  // const [title, setTitle] = useState<string>("");
-  // const [country, setCountry] = useState<string>("");
-  // const [imdbid, setImdbid] = useState<string>("");
-  // const [year, setYear] = useState<number>(11);
-  // const [director, setDirector] = useState<string>("");
-  // const [imdbrating, setImdbrating] = useState<string>("");
-  // const [imdbvotes, setImdbvotes] = useState<string>("");
-  // const [poster, setPoster] = useState<string>("");
   const [insertmovie, setInsertmovie] = useState<any>();
   const [chooseImage, setChooseImage] = useState<any>();
-  const [imgsrc, setImgsrc] = useState<any>("/picture.svg");
+  const [imgsrc, setImgsrc] = useState<string>("/picture.svg");
   const router = useRouter();
 
   const handleChange = (event: any) => {
-    // console.log(event.target.files[0]);
-    // switch (setter) {
-    //   case "title":
-    //     setInsertmovie({ ...insertmovie, title: event });
-    //   case "country":
-    //     setInsertmovie({ ...insertmovie, country: event });
-    //   case "imdbid":
-    //     setInsertmovie({ ...insertmovie, imdb_id: event });
-    //   case "year":
-    //     setInsertmovie({ ...insertmovie, year: parseInt(event) });
-    //   case "director":
-    //     setInsertmovie({ ...insertmovie, director: event });
-    //   case "imdbrating":
-    //     setInsertmovie({ ...insertmovie, imdb_rating: event });
-    //   case "imdbvotes":
-    //     setInsertmovie({ ...insertmovie, imdb_votes: event });
-    //   case "poster":
-    //     setInsertmovie({ ...insertmovie, poster: event });
-    // }
     if (event.target.name === "year") {
       setInsertmovie({
         ...insertmovie,
         [event.target.name]: parseInt(event.target.value),
       });
     } else if (event.target.name === "poster") {
-      // console.log(11);
       setChooseImage(event.target.files[0]);
     } else {
       setInsertmovie({
@@ -59,54 +29,44 @@ const AddMovie = () => {
 
   const addMovieForm = async (event: any) => {
     event.preventDefault();
-    console.log(insertmovie);
 
     try {
       console.log(insertmovie);
       if (insertmovie != undefined) {
         const { status, data } = await addMovie(insertmovie);
         setInsertmovie({});
-        console.log(insertmovie);
       }
       router.push("/");
-      console.log("nice");
     } catch (err) {
       console.log(err);
     }
   };
 
-  // const imgRef = useRef();
-
   useEffect(() => {
     if (window.FileReader) {
-      // console.log(11);
       let file = chooseImage;
       let reader = new FileReader();
-      // console.log(file);
       if (file && file.type.match("image.*")) {
-        // console.log(22);
-            let url = reader.readAsDataURL(file);
-            reader.onload = () => {
-              // Make a fileInfo Object
-              let fileInfo = {
-                name: file.name,
-                type: file.type,
-                size: Math.round(file.size / 1000) + ' kB',
-                base64: reader.result,
-                file: file,
-              }
-            console.log(fileInfo);
-            setImgsrc(reader.result);
-            setInsertmovie({
-              ...insertmovie,
-              poster: reader.result,
-            });
-        }
+        let url = reader.readAsDataURL(file);
+        reader.onload = () => {
+          // Make a fileInfo Object
+          let fileInfo = {
+            name: file.name,
+            type: file.type,
+            size: Math.round(file.size / 1000) + " kB",
+            base64: reader.result,
+            file: file,
+          };
+          if (reader.result) setImgsrc(reader.result.toString());
+          setInsertmovie({
+            ...insertmovie,
+            poster: reader.result,
+          });
+        };
       }
     }
-    // console.log(55);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[chooseImage])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chooseImage]);
 
   return (
     <Layout>
@@ -192,7 +152,13 @@ const AddMovie = () => {
             accept="image/*"
             onChange={(e) => handleChange(e)}
           />
-          <Image src={imgsrc} alt="" width={200} height={300} className="mb-5 mt-5 rounded-md"/>
+          <Image
+            src={imgsrc}
+            alt=""
+            width={200}
+            height={300}
+            className="mb-5 mt-5 rounded-md"
+          />
         </div>
         <button
           type="submit"

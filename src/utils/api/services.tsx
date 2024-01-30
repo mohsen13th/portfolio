@@ -2,14 +2,14 @@ import axios from "axios";
 
 const SERVER_URL: string = "https://moviesapi.ir";
 
-export const MoviesSrv = async () => {
+export const Movies = async () => {
   const url: string = `${SERVER_URL}/api/v1/movies`;
   console.log(url);
   const { data } = await axios.get(url);
   return data.data;
 };
 
-export const FilteredMoviesSrv = async (name: string) => {
+export const FilteredMovies = async (name: string) => {
   const url: string = `${SERVER_URL}/api/v1/movies${
     name != "" ? `/?q=${name}` : ``
   }`;
@@ -18,7 +18,7 @@ export const FilteredMoviesSrv = async (name: string) => {
   return data.data;
 };
 
-export const MovieSrv = async (id: any) => {
+export const aMovie = async (id: any) => {
   // console.log(`id = ${id}`)
   const url: string = `${SERVER_URL}/api/v1/movies/${id}`;
   const { data } = await axios.get(url);
@@ -26,14 +26,14 @@ export const MovieSrv = async (id: any) => {
   return data;
 };
 
-export const GenresSrv = async () => {
+export const Genres = async () => {
   const url: string = `${SERVER_URL}/api/v1/genres`;
   const { data } = await axios.get(url);
   //console.log(data)
   return data;
 };
 
-export const MoviesGenSrv = async (gid: number) => {
+export const MoviesSpecialGenre = async (gid: number) => {
   const url: string = `${SERVER_URL}/api/v1/genres/${gid}/movies`;
   const { data } = await axios.get(url);
   // console.log(data.data)

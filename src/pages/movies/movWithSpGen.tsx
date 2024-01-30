@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
-import { GenresSrv, MoviesGenSrv } from "@/utils/api/services";
+import { Genres, MoviesSpecialGenre } from "@/utils/api/services";
 import Image from "next/image";
 import Link from "next/link";
 
 const MovWithSpGen = ({ gid, id }: any) => {
   const [allMovies, setAllMovies]: any = useState([]);
   const [allGenres, setAllGenres]: any = useState([]);
-  console.log(id);
-  console.log(gid);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const genres = await GenresSrv();
+        const genres = await Genres();
         setAllGenres(genres);
       } catch (err) {}
     };
@@ -25,7 +23,7 @@ const MovWithSpGen = ({ gid, id }: any) => {
           (item: { name: string | any[] }) => item.name == gid
         );
         if (filterData.length === 1) {
-          const AllGenMov = await MoviesGenSrv(filterData[0].id);
+          const AllGenMov = await MoviesSpecialGenre(filterData[0].id);
           const FilteredGenMovies = AllGenMov.filter(
             (item: { id: any }) => item.id != id
           );
